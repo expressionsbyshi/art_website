@@ -1,86 +1,145 @@
-<style>
-  .slideshow-container {
-    position: relative;
-    max-width: 100%;
-    height: 300px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-
-  .slide {
-    display: none;
-    width: 100%;
-    height: 100%;
-  }
-
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 12px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    transition: 0.3s;
-    border-radius: 0 3px 3px 0;
-    background-color: rgba(0,0,0,0.5);
-    user-select: none;
-  }
-
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-
-  .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-  }
-</style>
-
-<div class="slideshow-container">
-  <div class="slide">
-    <img src="images/1.jpg" alt="Art 1">
-  </div>
-  <div class="slide">
-    <img src="images/2.jpg" alt="Art 2">
-  </div>
-  <div class="slide">
-    <img src="images/3.jpg" alt="Art 3">
-  </div>
-
-  <a class="prev" onclick="plusSlides(-1)">❮</a>
-  <a class="next" onclick="plusSlides(1)">❯</a>
-</div>
-
-<script>
-  let slideIndex = 0;
-  const slides = document.getElementsByClassName("slide");
-
-  function showSlide(index) {
-    if (index >= slides.length) slideIndex = 0;
-    if (index < 0) slideIndex = slides.length - 1;
-
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivani's Art Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #fffaf5;
+      color: #333;
     }
 
-    slides[slideIndex].style.display = "block";
-  }
+    header {
+      background-color: #ffdad6;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      border-bottom: 2px solid #f0c0ba;
+    }
 
-  function plusSlides(n) {
-    showSlide(slideIndex += n);
-  }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      background-color: #fff0ed;
+    }
 
-  // Initialize first slide
-  showSlide(slideIndex);
-</script>
+    nav button {
+      background-color: #f7b5b0;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background-color: #f2948e;
+    }
+
+    section {
+      display: none;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #fff0ed;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    .cv-download {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #f7b5b0;
+      color: black;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .cv-download:hover {
+      background-color: #f2948e;
+    }
+  </style>
+</head>
+<body>
+  <header>Shivani's Art Portfolio</header>
+
+  <nav>
+    <button onclick="showSection('about')">About Me</button>
+    <button onclick="showSection('experience')">Experience</button>
+    <button onclick="showSection('gallery')">Gallery</button>
+    <button onclick="showSection('cv')">CV</button>
+  </nav>
+
+  <section id="about" class="active">
+    <h2>About Me</h2>
+    <p>Hello! I'm Shivani, a passionate artist who loves working with canvas, mini-paintings, and bookmarks. I recently showcased my work at the Köln Wagenhaus Gallery and am currently based in Frankfurt.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul>
+      <li>2025 – Köln Wagenhaus Gallery Exhibition</li>
+      <li>2024 – Mini Art Fair Participant, Frankfurt</li>
+      <li>2023 – Independent Artist & Commissioned Projects</li>
+    </ul>
+  </section>
+
+  <section id="gallery">
+    <h2>Art Gallery</h2>
+    <div class="gallery">
+      <img src="images/1.jpg" alt="Art 1">
+      <img src="images/2.jpg" alt="Art 2">
+      <img src="images/3.jpg" alt="Art 3">
+    </div>
+  </section>
+
+  <section id="cv">
+    <h2>Curriculum Vitae</h2>
+    <p>Click the button below to view or download my CV.</p>
+    <a class="cv-download" href="cv/Shivani_artist_CV.pdf" target="_blank">View My CV (PDF)</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Shivani. All rights reserved.
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
