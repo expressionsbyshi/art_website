@@ -99,13 +99,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      justify-content: center;
+      justify-content: space-between;
       margin-top: 2rem;
     }
     
     .experience-column {
-      flex: 1 1 400px;
-      max-width: 500px;
+      flex: 1 1 45%;  /* 2 columns, wrap below 900px */
+      max-width: 100%;
     }
     
     .slideshow-wrapper {
@@ -200,7 +200,7 @@
       <p>I had the honor of showcasing my work at the prestigious Köln Wagenhaus Gallery in 2025.</p>
       <div class="slideshow-wrapper">
         <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-        <div class="slideshow">
+        <div class="slideshow" id="koln-slideshow">
           <img class="slide-img" src="images/Koln_Waagehaus.jpg" alt="Gallery View Outside">
           <img class="slide-img" src="images/View.jpg" alt="Art Display View">
           <img class="slide-img" src="images/Visitors.jpg" alt="Visitors at Gallery">
@@ -208,6 +208,7 @@
         </div>
         <button class="next" onclick="changeSlide(1)">&#10095;</button>
       </div>
+
     </div>
 
     <!-- Column 2: Independent work -->
@@ -248,29 +249,26 @@
   </script>
 
   <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide-img');
+    let currentSlideIndex = 0;
   
     function showSlide(index) {
+      const slides = document.querySelectorAll('#koln-slideshow .slide-img');
       slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) {
-          slide.classList.add('active');
-        }
+        slide.classList.toggle('active', i === index);
       });
     }
   
     function changeSlide(direction) {
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
-      showSlide(currentSlide);
+      const slides = document.querySelectorAll('#koln-slideshow .slide-img');
+      currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
+      showSlide(currentSlideIndex);
     }
   
     // Auto-advance every 5 seconds
     setInterval(() => changeSlide(1), 5000);
-  
-    // Initialize first slide
-    showSlide(currentSlide);
+    showSlide(currentSlideIndex);
   </script>
+
 
 </body>
 </html>
