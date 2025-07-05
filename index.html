@@ -193,7 +193,11 @@
       height: 100%;
       object-fit: contain;
     }
-     
+
+    html {
+      scroll-behavior: smooth;
+    }
+    
   </style>
 </head>
 <body>
@@ -204,6 +208,7 @@
     <button onclick="showSection('experience')">Experience</button>
     <button onclick="showSection('gallery')">Gallery</button>
     <button onclick="showSection('cv')">CV</button>
+    <button onclick="showSection('instagram')">Instagram</button>
   </nav>
 
   <section id="about" class="active">
@@ -255,6 +260,19 @@
     <h2>Curriculum Vitae</h2>
     <p>Click the button below to view or download my CV.</p>
     <a class="cv-download" href="cv/SG_Artist_CV.pdf" target="_blank">View My CV (PDF)</a>
+  </section>
+
+  <section id="instagram">
+    <h2>Follow Me on Instagram</h2>
+    <p>Stay updated with my latest artworks, behind-the-scenes, and more on Instagram!</p>
+    <p>
+      <a href="https://www.instagram.com/expressionsbyshi/" target="_blank">
+        @expressionsbyshi
+      </a>
+    </p>
+    <div style="margin-top: 1.5rem; text-align: center;">
+      <img src="images/expressionsbyshi_qr.png" alt="Instagram QR Code" style="width: 250px; max-width: 90%; border-radius: 12px;">
+    </div>
   </section>
 
   <footer>
