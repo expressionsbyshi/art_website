@@ -107,6 +107,23 @@
       flex: 1 1 45%;  /* 2 columns, wrap below 900px */
       max-width: 100%;
     }
+
+    .experience-media-box {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fceeee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .experience-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }    
     
     .slideshow-wrapper {
       position: relative;
@@ -198,7 +215,7 @@
     <div class="experience-column">
       <h3>2025 – Köln Wagenhaus Gallery Exhibition</h3>
       <p>I had the honor of showcasing my work at the prestigious Köln Wagenhaus Gallery in 2025.</p>
-      <div class="slideshow-wrapper">
+      <div class="experience-media-box">
         <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
         <div class="slideshow" id="koln-slideshow">
           <img class="slide-img" src="images/Koln_Waagehaus.jpg" alt="Gallery View Outside">
@@ -207,15 +224,16 @@
           <img class="slide-img" src="images/Bookmark.jpg" alt="Bookmark Display">
         </div>
         <button class="next" onclick="changeSlide(1)">&#10095;</button>
-      </div>
-
+      </div>      
     </div>
 
     <!-- Column 2: Independent work -->
     <div class="experience-column">
       <h3>Independent Artist & Commissioned Projects</h3>
       <p>I create custom art for private collectors and clients. Here's a featured piece:</p>
-      <img src="images/7_Dawn_25x25cm.jpg" alt="Dawn - Commissioned Art" class="experience-img">
+      <div class="experience-media-box">
+        <img src="images/7_Dawn_25x25cm.jpg" alt="Dawn - Commissioned Art">
+      </div>
     </div>
   </div>
 </section>
