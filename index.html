@@ -94,6 +94,74 @@
     .cv-download:hover {
       background-color: #f2948e;
     }
+
+    .experience-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    
+    .experience-column {
+      flex: 1 1 400px;
+      max-width: 500px;
+    }
+    
+    .slideshow-wrapper {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    
+    .slideshow {
+      position: relative;
+      height: 100%;
+    }
+    
+    .slide-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    
+    .slide-img.active {
+      opacity: 1;
+    }
+    
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(247, 181, 176, 0.8);
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .prev:hover,
+    .next:hover {
+      background-color: #f2948e;
+    }
+    
+    .prev {
+      left: 10px;
+    }
+    
+    .next {
+      right: 10px;
+    }
+    
   </style>
 </head>
 <body>
@@ -114,22 +182,28 @@
 <section id="experience">
   <h2>Experience</h2>
 
-  <div>
-    <h3>2025 – Köln Wagenhaus Gallery Exhibition</h3>
-    <p>I had the honor of showcasing my work at the prestigious Köln Wagenhaus Gallery in 2025. The following images highlight moments and exhibits from the event.</p>
-    <div class="gallery">
-      <img src="images/Koln_Waagehaus.jpg" alt="Gallery View Outside">
-      <img src="images/View.jpg" alt="Art Display View">
-      <img src="images/Visitors.jpg" alt="Visitors at Gallery">
-      <img src="images/Bookmark.jpg" alt="Bookmark Display">
+  <div class="experience-container">
+    <!-- Column 1: Slideshow for Köln Wagenhaus -->
+    <div class="experience-column">
+      <h3>2025 – Köln Wagenhaus Gallery Exhibition</h3>
+      <p>I had the honor of showcasing my work at the prestigious Köln Wagenhaus Gallery in 2025.</p>
+      <div class="slideshow-wrapper">
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <div class="slideshow">
+          <img class="slide-img" src="images/Koln_Waagehaus.jpg" alt="Gallery View Outside">
+          <img class="slide-img" src="images/View.jpg" alt="Art Display View">
+          <img class="slide-img" src="images/Visitors.jpg" alt="Visitors at Gallery">
+          <img class="slide-img" src="images/Bookmark.jpg" alt="Bookmark Display">
+        </div>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+      </div>
     </div>
-  </div>
 
-  <div style="margin-top: 2rem;">
-    <h3>Independent Artist & Commissioned Projects</h3>
-    <p>As an independent artist, I create custom pieces for private collectors and clients. Here's one of my featured works:</p>
-    <div class="gallery">
-      <img src="images/7_Dawn_25x25cm.jpg" alt="Dawn - Commissioned Art">
+    <!-- Column 2: Independent work -->
+    <div class="experience-column">
+      <h3>Independent Artist & Commissioned Projects</h3>
+      <p>As an independent artist, I create custom pieces for private collectors and clients. Here's one of my featured works:</p>
+      <img src="images/7_Dawn_25x25cm.jpg" alt="Dawn - Commissioned Art" class="experience-img">
     </div>
   </div>
 </section>
@@ -161,5 +235,31 @@
       document.getElementById(id).classList.add('active');
     }
   </script>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide-img');
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+  
+    function changeSlide(direction) {
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+  
+    // Auto-advance every 5 seconds
+    setInterval(() => changeSlide(1), 5000);
+  
+    // Initialize first slide
+    showSlide(currentSlide);
+  </script>
+
 </body>
 </html>
