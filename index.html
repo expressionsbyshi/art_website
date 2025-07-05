@@ -206,9 +206,9 @@
   <nav>
     <button onclick="showSection('about')">About Me</button>
     <button onclick="showSection('experience')">Experience</button>
-    <button onclick="showSection('gallery')">Gallery</button>
-    <button onclick="showSection('cv')">CV</button>
+    <button onclick="showSection('gallery')">Gallery</button>    
     <button onclick="showSection('instagram')">Instagram</button>
+    <button onclick="showSection('contact_and_cv')">Contact & CV</button>
   </nav>
 
   <section id="about" class="active">
@@ -256,12 +256,6 @@
     </div>
   </section>
 
-  <section id="cv">
-    <h2>Curriculum Vitae</h2>
-    <p>Click the button below to view or download my CV.</p>
-    <a class="cv-download" href="cv/SG_Artist_CV.pdf" target="_blank">View My CV (PDF)</a>
-  </section>
-
   <section id="instagram">
     <h2>Follow Me on Instagram</h2>
     <p>Stay updated with my latest artworks, behind-the-scenes, and more on Instagram!</p>
@@ -272,6 +266,24 @@
     </p>
     <div style="margin-top: 1.5rem; text-align: center;">
       <img src="images/expressionsbyshi_qr.png" alt="Instagram QR Code" style="width: 250px; max-width: 90%; border-radius: 12px;">
+    </div>
+  </section>
+
+  <section id="contact_and_cv">
+    <h2>Contact & Curriculum Vitae</h2>
+    <div class="experience-container">
+      <!-- Contact Column -->
+      <div class="experience-column">
+        <h3>Contact</h3>
+        <img src="images/Shivani_art_visiting_card.jpg" alt="Visiting Card" class="experience-img">
+      </div>
+  
+      <!-- CV Column -->
+      <div class="experience-column">
+        <h3>Curriculum Vitae</h3>
+        <p>Click the button below to view or download my CV.</p>
+        <a class="cv-download" href="cv/SG_Artist_CV.pdf" target="_blank">View My CV (PDF)</a>
+      </div>
     </div>
   </section>
 
